@@ -1,0 +1,29 @@
+Class Solution(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        
+        if not root:
+            return
+        ret = [root]
+        fin = []
+        
+        while len(ret) >0:
+            
+            head = ret[-1]
+            
+            while head is not None:
+                
+                ret.append(head.left)
+                head = head.left
+          
+            ret.pop()
+            if ret:
+                fin.append(ret[-1].val)
+
+                head = ret.pop().right
+                ret.append(head)
+
+        return fin
